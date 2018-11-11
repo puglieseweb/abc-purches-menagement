@@ -35,7 +35,7 @@ public class ContractVerifierTest {
     @Test
     public void shouldFetchAllOrderForCustomer() {
         // when:
-        ResponseOptions response = given().get("/v1/com/abc/customers/001/orders/");
+        ResponseOptions response = given().get("/v1/com/abc/accounts/001/orders/");
         // then:
         assertThat(response.statusCode()).isEqualTo(204);
         // and:
@@ -48,7 +48,7 @@ public class ContractVerifierTest {
     @Test
     public void shouldCreateNewOrder() {
         // when:
-        ResponseOptions response = given().post("/v1/com/abc/customers/001/orders/");
+        ResponseOptions response = given().post("/v1/com/abc/accounts/001/orders/");
         // then:
         assertThat(response.statusCode()).isEqualTo(201);
         assertThat(response.header("Location")).isEqualTo(001);
@@ -58,7 +58,7 @@ public class ContractVerifierTest {
     @Test
     public void shouldFetchASpecificOrder() {
         // when:
-        ResponseOptions response = given().get("/v1/com/abc/customers/001/orders/001");
+        ResponseOptions response = given().get("/v1/com/abc/accounts/001/orders/001");
         // then:
         assertThat(response.statusCode()).isEqualTo(200);
         // and:
@@ -72,7 +72,7 @@ public class ContractVerifierTest {
     @Test
     public void shouldAddItemAnOrder() {
         // when:
-        ResponseOptions response = given().post("/v1/com/abc/customers/001/orders/001/items");
+        ResponseOptions response = given().post("/v1/com/abc/accounts/001/orders/001/items");
         // then:
         assertThat(response.statusCode()).isEqualTo(201);
         assertThat(response.header("Location")).isEqualTo(001);
@@ -82,7 +82,7 @@ public class ContractVerifierTest {
     @Test
     public void shouldDeleteItemToOrder() {
         // when:
-        ResponseOptions response = given().delete("/v1/com/abc/customers/001/orders/001/items/001");
+        ResponseOptions response = given().delete("/v1/com/abc/accounts/001/orders/001/items/001");
         // then:
         assertThat(response.statusCode()).isEqualTo(204);
     }
