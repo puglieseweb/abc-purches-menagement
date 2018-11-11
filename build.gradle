@@ -1,0 +1,51 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.0.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+
+group = 'com.ccuk.test'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+	maven { url "https://repo.spring.io/milestone" }
+}
+
+ext {
+	springCloudVersion = 'Greenwich.M1'
+}
+
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	runtimeOnly 'org.hsqldb:hsqldb'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-verifier'
+	testImplementation 'com.jayway.restassured:rest-assured:2.9.0'
+	testImplementation 'org.assertj:assertj-core:3.11.1'
+	testImplementation 'com.jayway.jsonpath:json-path-assert:2.2.0'
+	testImplementation 'com.revinate:assertj-json:1.0.0'
+
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
