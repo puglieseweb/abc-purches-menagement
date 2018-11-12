@@ -2,9 +2,12 @@ package com.ccuk.test.pms;
 
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import io.restassured.response.ResponseOptions;
+import org.json.JSONException;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.skyscreamer.jsonassert.JSONAssert;
+import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.contract.verifier.messaging.boot.AutoConfigureMessageVerifier;
@@ -33,15 +36,14 @@ public class ContractVerifierTest {
 
     // Requirement 5. The System should be able to list all orders for a customer
     @Test
-    public void shouldFetchAllOrderForCustomer() {
+    public void shouldFetchAllOrderForCustomer() throws Exception {
         // when:
         ResponseOptions response = given().get("/v1/com/abc/accounts/001/orders/");
         // then:
         assertThat(response.statusCode()).isEqualTo(204);
         // and:
-        final JsonPathAssertionUtil jsonPathUtil = new JsonPathAssertionUtil(response.getBody().asString());
-        jsonPathUtil.assertJsonPathHasValue("$.customer.id", "001");
-        jsonPathUtil.assertJsonPathHasValues("$.customer.orders", "[]");
+        JSONAssert.assertEquals(response.getBody().print(), "[{\"id\":1,\"items\":[{\"id\":1,\"name\":\"100 Watt\",\"description\":\"Bulb\"}]}], ", JSONCompareMode.LENIENT);
+
     }
 
     //Requirement 4. The System should allow user to create a new order

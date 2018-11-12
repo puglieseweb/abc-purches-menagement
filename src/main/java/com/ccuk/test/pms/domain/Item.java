@@ -9,11 +9,6 @@ public class Item {
     @GeneratedValue
     @Column(name = "ITEM_ID")
     private Long id;
-
-    @Column(name = "ORDER_ID")
-    private Long orderId;
-
-
     @Column(name = "NAME")
     private String name;
     @Column(name = "DESCRIPTION")
@@ -25,15 +20,6 @@ public class Item {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-
-    public Long getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
     }
 
     public String getName() {
