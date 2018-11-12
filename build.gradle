@@ -34,12 +34,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-    runtimeOnly 'org.hsqldb:hsqldb'
+    implementation 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-verifier'
     testImplementation 'com.jayway.restassured:rest-assured:2.9.0'
     testImplementation 'org.assertj:assertj-core:3.11.1'
-//	testImplementation 'com.jayway.jsonpath:json-path-assert:2.2.0'
 }
 
 dependencyManagement {

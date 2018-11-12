@@ -1,38 +1,54 @@
 package com.ccuk.test.pms.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "ITEMS")
 public class Item {
     @Id
     @GeneratedValue
-    private String itemId;
-    private String itemName;
-    private String itemDescription;
+    @Column(name = "ITEM_ID")
+    private Long id;
 
-    public String getItemId() {
-        return itemId;
+    @Column(name = "ORDER_ID")
+    private Long orderId;
+
+
+    @Column(name = "NAME")
+    private String name;
+    @Column(name = "DESCRIPTION")
+    private String description;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getItemName() {
-        return itemName;
+
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
-    public String getItemDescription() {
-        return itemDescription;
+    public String getName() {
+        return name;
     }
 
-    public void setItemDescription(String itemDescription) {
-        this.itemDescription = itemDescription;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

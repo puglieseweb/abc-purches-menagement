@@ -1,0 +1,10 @@
+spring:
+  # enable H2 web console and set url for web console
+  # http://localhost:8080/h2-console/
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: 'jdbc:h2:mem:abcdb'
+    username: sa
+    password:
